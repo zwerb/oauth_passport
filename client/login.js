@@ -3,9 +3,7 @@ import React from 'react'
 const Login = (props) => {
   return (
     <div className='h100 w100 flex column align-items-center justify-center'>
-      <div>
-        <h1>Let's Loggin'!</h1>
-      </div>
+      <h1>Let's Loggin'!</h1>
       <div className='flex w50'>
         <img src='/loggin.png' />
         <form className='grow1'>
