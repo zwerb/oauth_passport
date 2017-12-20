@@ -10,7 +10,7 @@ const Login = (props) => {
       <h1>Let's Loggin'!</h1>
       <div className='flex w50'>
         <img src='/loggin.png' />
-        <form onSubmit={handleSubmit} className='grow1'>
+        <form className='grow1' onSubmit={handleSubmit}>
           <div className='flex column'>
             <div className='flex column m1'>
               <label htmlFor='email'>Email</label>
