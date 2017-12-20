@@ -1,9 +1,6 @@
 import React from 'react'
-import {connect} from 'react-redux'
 
 const Login = (props) => {
-  const {handleSubmit} = props
-
   return (
     <div className='h100 w100 flex column align-items-center justify-center'>
       <div>
@@ -11,7 +8,7 @@ const Login = (props) => {
       </div>
       <div className='flex w50'>
         <img src='/loggin.png' />
-        <form onSubmit={handleSubmit} className='grow1'>
+        <form className='grow1'>
           <div className='flex column'>
             <div className='flex column m1'>
               <label htmlFor='email'>Email</label>
@@ -31,18 +28,4 @@ const Login = (props) => {
   )
 }
 
-const mapStateToProps = (state) => {
-  return {
-
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    handleSubmit (evt) {
-      evt.preventDefault()
-    }
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+export default Login

@@ -1,14 +1,6 @@
 import React from 'react'
-import {Redirect} from 'react-router-dom'
-import {connect} from 'react-redux'
 
 const UserPage = (props) => {
-  const {user} = props
-
-  if (!user.id) {
-    return <Redirect to='/' />
-  }
-
   return (
     <div className='h100 w100 flex column align-items-center justify-center'>
       <div>
@@ -18,10 +10,4 @@ const UserPage = (props) => {
   )
 }
 
-const mapStateToProps = (state) => {
-  return {
-    user: state.user
-  }
-}
-
-export default connect(mapStateToProps)(UserPage)
+export default UserPage
