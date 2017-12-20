@@ -10,8 +10,10 @@ router.get('/me', (req, res, next) => {
 
 router.post('/login', (req, res, next) => {
   User.findOne({
-    email: req.body.email,
-    password: req.body.password
+    where: {
+      email: req.body.email,
+      password: req.body.password
+    }
   })
     .then(user => {
       if (user) {

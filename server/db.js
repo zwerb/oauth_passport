@@ -10,6 +10,9 @@ const User = db.define('users', {
   },
   password: {
     type: Sequelize.STRING
+  },
+  imageUrl: {
+    type: Sequelize.STRING
   }
 })
 
