@@ -5,7 +5,7 @@ db.sync({force: true})
     return User.create({
       email: 'cody@email.com',
       password: '12345',
-      imageUrl: '/cody.jpg'
+      imageUrl: '/cody.png'
     })
   })
   .then(() => {
