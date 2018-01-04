@@ -3,7 +3,8 @@ const path = require('path')
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
 const session = require('express-session')
-const {db} = require('./db')
+const passport = require('passport')
+const {db, User} = require('./db')
 const app = express()
 const PORT = 3000
 
@@ -20,6 +21,24 @@ app.use(session({
   resave: false,
   saveUninitialized: false
 }))
+
+// consumes 'req.session' so that passport can know what's on the session
+app.use(passport.initialize())
+
+// this will invoke our registered 'deserializeUser' method
+// and attempt to put our user on 'req.user'
+app.use(passport.session())
+
+// If we've serialized the user on our session with an id, we look it up here
+// and attach it as 'req.user'.
+passport.deserializeUser(async (id, done) => {
+  try {
+    const user = await User.findById(id)
+    done(null, user)
+  } catch (err) {
+    done(err)
+  }
+})
 
 app.use('/auth', require('./auth'))
 

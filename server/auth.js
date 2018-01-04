@@ -2,33 +2,38 @@ const router = require('express').Router()
 const {User} = require('./db')
 module.exports = router
 
-router.get('/me', (req, res, next) => {
-  User.findById(req.session.userId)
-    .then(user => user ? res.json(user) : res.json({}))
-    .catch(next)
+router.use('/google', require('./oauth'))
+
+router.get('/me', async (req, res, next) => {
+  try {
+    const user = await User.findById(req.user)
+    res.json(user || {})
+  } catch (err) {
+    next(err)
+  }
 })
 
-router.post('/login', (req, res, next) => {
-  User.findOne({
-    where: {
-      email: req.body.email,
-      password: req.body.password
-    }
-  })
-    .then(user => {
-      if (user) {
-        req.session.userId = user.id
-        res.json(user)
-      } else {
-        const err = new Error('Incorrect email or password!')
-        err.status = 401
-        next(err)
+router.post('/login', async (req, res, next) => {
+  try {
+    const user = await User.findOne({
+      where: {
+        email: req.body.email,
+        password: req.body.password
       }
     })
-    .catch(next)
+    if (user) {
+      req.login(user, (err) => err ? next(err) : res.json(user))
+    } else {
+      const err = new Error('Incorrect email or password!')
+      err.status = 401
+      throw err
+    }
+  } catch (err) {
+    next(err)
+  }
 })
 
 router.delete('/logout', (req, res, next) => {
-  req.session.destroy()
+  req.logout()
   res.status(204).end()
 })
