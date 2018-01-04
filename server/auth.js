@@ -5,12 +5,7 @@ module.exports = router
 router.use('/google', require('./oauth'))
 
 router.get('/me', async (req, res, next) => {
-  try {
-    const user = await User.findById(req.user)
-    res.json(user || {})
-  } catch (err) {
-    next(err)
-  }
+  res.json(req.user || {})
 })
 
 router.post('/login', async (req, res, next) => {
