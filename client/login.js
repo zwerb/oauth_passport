@@ -1,6 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {login} from './store'
+import LocalLoginForm from './local-login-form'
+import OauthLoginForm from './oauth-login-form'
 
 const Login = (props) => {
   const {handleSubmit} = props
@@ -10,21 +12,10 @@ const Login = (props) => {
       <h1>Let's Loggin'!</h1>
       <div className='flex w50'>
         <img src='/loggin.png' />
-        <form className='grow1' onSubmit={handleSubmit}>
-          <div className='flex column'>
-            <div className='flex column m1'>
-              <label htmlFor='email'>Email</label>
-              <input type='email' name='email' className='input' />
-            </div>
-            <div className='flex column m1'>
-              <label htmlFor='email'>Password</label>
-              <input type='password' name='password' className='input' />
-            </div>
-            <div className='m1'>
-              <button type='submit' className='btn bg-blue white p1 rounded'>Submit</button>
-            </div>
-          </div>
-        </form>
+        <div className='grow1'>
+          <LocalLoginForm handleSubmit={handleSubmit} />
+          <OauthLoginForm />
+        </div>
       </div>
     </div>
   )
