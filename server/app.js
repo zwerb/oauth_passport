@@ -29,6 +29,11 @@ app.use(passport.initialize())
 // and attempt to put our user on 'req.user'
 app.use(passport.session())
 
+// after we find or create a user, we 'serialize' our user on the session
+passport.serializeUser((user, done) => {
+  done(null, user.id)
+})
+
 // If we've serialized the user on our session with an id, we look it up here
 // and attach it as 'req.user'.
 passport.deserializeUser(async (id, done) => {

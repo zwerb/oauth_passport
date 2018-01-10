@@ -42,11 +42,6 @@ const verificationCallback = async (token, refreshToken, profile, done) => {
   }
 }
 
-// after we findOrCreate a user, we 'serialize' our user on the session
-passport.serializeUser((user, done) => {
-  done(null, user.id)
-})
-
 const strategy = new GoogleStrategy(googleCredentials, verificationCallback)
 
 // configuring the strategy (credentials + verification callback)
