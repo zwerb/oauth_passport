@@ -1,12 +1,15 @@
 import React from 'react'
+import {connect} from 'react-redux'
 
 const Login = (props) => {
+  const {handleSubmit} = props
+
   return (
     <div className='h100 w100 flex column align-items-center justify-center'>
       <h1>Let's Loggin'!</h1>
       <div className='flex w50'>
         <img src='/loggin.png' />
-        <form className='grow1'>
+        <form className='grow1' onSubmit={handleSubmit}>
           <div className='flex column'>
             <div className='flex column m1'>
               <label htmlFor='email'>Email</label>
@@ -26,4 +29,13 @@ const Login = (props) => {
   )
 }
 
-export default Login
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    handleSubmit (evt) {
+      evt.preventDefault()
+      // your code here!
+    }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Login)
