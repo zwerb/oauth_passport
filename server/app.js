@@ -21,8 +21,6 @@ app.use(session({
   saveUninitialized: false
 }))
 
-app.use('/auth', require('./auth'))
-
 // Static middleware
 app.use(express.static(path.join(__dirname, '..', 'public')))
 
