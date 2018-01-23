@@ -2,10 +2,20 @@ const router = require('express').Router()
 const {User} = require('./db')
 module.exports = router
 
+const userNotFound = next => {
+  const err = new Error('Not found')
+  err.status = 404
+  next(err)
+}
+
 router.get('/me', (req, res, next) => {
-  User.findById(req.session.userId)
-    .then(user => user ? res.json(user) : res.json({}))
-    .catch(next)
+  if (!req.session.userId) {
+    userNotFound(next)
+  } else {
+    User.findById(req.session.userId)
+      .then(user => user ? res.json(user) : userNotFound(next))
+      .catch(next)
+  }
 })
 
 router.put('/login', (req, res, next) => {
