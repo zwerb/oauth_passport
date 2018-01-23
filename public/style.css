@@ -83,7 +83,8 @@ body {font-family: arial,sans-serif;}
   outline: none;
 }
 .rounded {border-radius: 3px;}
-.btn:hover {filter: brightness(85%);}
+.btn.bg-blue:hover {background-color: #47A09D;}
+.btn.bg-red:hover {background-color: #AD000F;}
 
 /* inputs */
 .input {

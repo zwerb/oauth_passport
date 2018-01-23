@@ -20,7 +20,7 @@ const Login = (props) => {
               <input type='password' name='password' className='input' />
             </div>
             <div className='m1'>
-              <button type='submit' className='btn bg-blue white p1'>Submit</button>
+              <button type='submit' className='btn bg-blue white p1 rounded'>Submit</button>
             </div>
           </div>
         </form>
