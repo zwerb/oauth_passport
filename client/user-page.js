@@ -24,6 +24,11 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
+  // Hey, check it out! Because we pass the connected UserPage to a Route
+  // (we do this in client/index.js), it receives the "route props"
+  // (match, location, and history) as its "own props".
+  const history = ownProps.history
+
   return {
     handleClick () {
       // your code here
