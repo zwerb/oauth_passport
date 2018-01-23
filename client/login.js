@@ -30,6 +30,11 @@ const Login = (props) => {
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
+  // Hey, check it out! Because we pass the connected Login to a Route
+  // (we do this in client/index.js), it receives the "route props"
+  // (match, location, and history) as it's "own props".
+  const history = ownProps.history
+
   return {
     handleSubmit (evt) {
       evt.preventDefault()
