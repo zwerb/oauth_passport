@@ -22,7 +22,7 @@ export const getMe = () => dispatch => {
 }
 
 export const login = (formData) => dispatch => {
-  return axios.post('/auth/login', formData)
+  return axios.put('/auth/login', formData)
     .then(res => res.data)
     .then(user => dispatch(gotMe(user)))
     .catch(console.error.bind(console))
