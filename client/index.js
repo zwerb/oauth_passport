@@ -1,12 +1,21 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import {Provider} from 'react-redux'
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Switch, withRouter} from 'react-router-dom'
 import store from './store'
 import Login from './login'
 import UserPage from './user-page'
 
-class Main extends Component {
+// We've taken a class component and wrapped it in
+// `withRouter` so that it receives `history` from react-router-dom
+// as a prop! We've kept it a class component because (as we'll see
+// in the workshop), we want to take advantage of that `componentDidMount`
+// lifecycle hook!
+const Main = withRouter(class extends Component {
+  componentDidMount () {
+    // your code here
+  }
+
   render () {
     return (
       <Switch>
@@ -15,7 +24,7 @@ class Main extends Component {
       </Switch>
     )
   }
-}
+})
 
 ReactDOM.render(
   <Provider store={store}>
