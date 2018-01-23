@@ -45,8 +45,6 @@ passport.deserializeUser(async (id, done) => {
   }
 })
 
-app.use('/auth', require('./auth'))
-
 // Static middleware
 app.use(express.static(path.join(__dirname, '..', 'public')))
 
