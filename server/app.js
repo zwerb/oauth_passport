@@ -50,7 +50,8 @@ app.use('/auth', require('./auth'))
 // Static middleware
 app.use(express.static(path.join(__dirname, '..', 'public')))
 
-// If you want to add routes, they should go here!
+// authentication router
+app.use('/auth', require('./auth'))
 
 // For all GET requests that aren't to an API route,
 // we will send the index.html!
