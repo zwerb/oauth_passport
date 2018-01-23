@@ -8,7 +8,7 @@ router.get('/me', async (req, res, next) => {
   res.json(req.user || {})
 })
 
-router.post('/login', async (req, res, next) => {
+router.put('/login', async (req, res, next) => {
   try {
     const user = await User.findOne({
       where: {
