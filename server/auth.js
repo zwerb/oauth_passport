@@ -4,7 +4,7 @@ module.exports = router
 
 router.use('/google', require('./oauth'))
 
-router.get('/me', async (req, res, next) => {
+router.get('/me', (req, res, next) => {
   res.json(req.user || {})
 })
 

@@ -1,5 +1,6 @@
 module.exports = {
-  entry: './client/index.js',
+  // babel-polyfill enables async-await in our client js
+  entry: ['babel-polyfill', './client/index.js'],
   output: {
     path: __dirname,
     filename: './public/bundle.js'
