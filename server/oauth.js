@@ -28,7 +28,8 @@ const googleCredentials = {
 const verificationCallback = async (token, refreshToken, profile, done) => {
   const info = {
     // name: profile.displayName,
-    email: profile.emails[0].value
+    email: profile.emails[0].value,
+    imageUrl: profile.photos ? profile.photos[0].value : undefined
   }
 
   try {
