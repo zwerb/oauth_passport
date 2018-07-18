@@ -1,7 +1,6 @@
 const express = require('express')
 const path = require('path')
 const morgan = require('morgan')
-const bodyParser = require('body-parser')
 const session = require('express-session')
 const passport = require('passport')
 const {db, User} = require('./db')
@@ -12,8 +11,15 @@ const PORT = 3000
 app.use(morgan('dev'))
 
 // Body parsing middleware
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended: true}))
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
+
+// Session middleware
+app.use(session({
+  secret: 'This is not a very secure secret...',
+  resave: false,
+  saveUninitialized: false
+}))
 
 // Session middleware
 app.use(session({

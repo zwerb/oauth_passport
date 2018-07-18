@@ -5,7 +5,6 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.17.1",
-    "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "express-session": "^1.15.6",
     "morgan": "^1.8.2",
@@ -23,7 +22,9 @@
     "sequelize": "^4.2.1"
   },
   "scripts": {
-    "start": "webpack -w & nodemon server/app.js --ignore public",
+    "start": "npm run start-server & npm run build-watch",
+    "build-watch": "webpack -w",
+    "start-server": "nodemon server/app.js --ignore public",
     "seed": "node seed.js"
   },
   "devDependencies": {
