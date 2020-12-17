@@ -6,6 +6,7 @@ const passport = require('passport')
 const {db, User} = require('./db')
 const app = express()
 const PORT = 3000
+require('../secret')
 
 // Logging middleware
 app.use(morgan('dev'))
